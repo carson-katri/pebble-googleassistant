@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: '_gideon+hosted' });
 });
 
-/* GIDEON BULK */
+/* Assistant BULK */
 const https = require('https');
 const lame = require('lame');
 const googleTTS = require('google-tts-api');
@@ -17,8 +17,8 @@ const GoogleAssistant = require('google-assistant');
 
 const config = {
   auth: {
-    keyFilePath: '/Users/carson/Desktop/_gideon/_gideon+hosted/client_secret.json',
-    savedTokensPath: '/Users/carson/Desktop/_gideon/_gideon+hosted/tokens.js', // where you want the tokens to be saved
+    keyFilePath: 'client_secret.json', // Get a client_secret.json file for Google Asssitant
+    savedTokensPath: 'tokens.js', // where you want the tokens to be saved
   },
   audio: {
     encodingIn: 'LINEAR16', // supported are LINEAR16 / FLAC (defaults to LINEAR16)
@@ -143,7 +143,7 @@ const assistant = new GoogleAssistant(config);
       console.log('Assistant Error:', error);
     });
 
-/* GIDEON API */
+/* Assistant Endpoint */
 router.get('/ask', function(req, res, next) {
 	var request = req.query.query;
 	googleTTS(request)
